@@ -1,0 +1,25 @@
+{
+  "name": "brew-date",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/salman4js/brew-date.git"
+  },
+  "keywords": [
+    "date",
+    "javascript",
+    "brew-date"
+  ],
+  "author": "Salman4js",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/salman4js/brew-date/issues"
+  },
+  "homepage": "https://github.com/salman4js/brew-date#readme"
+}
