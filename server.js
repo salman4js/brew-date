@@ -35,13 +35,7 @@ const subDates = (date, number) => {
     date : date,
     number : number
   }
-  if(number === 1){
-    return "Yesterday"
-  } else if(number <= 7){
-    return "Last " +brewDate.subDates(props);
-  } else {
-    return brewDate.subDates(props);
-  }
+  return brewDate.subDates(props);
 }
 
 // Subtract dates by number and return a day!
