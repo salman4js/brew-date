@@ -35,7 +35,29 @@ const subDates = (date, number) => {
     date : date,
     number : number
   }
-  return brewDate.subDates(props);
+  if(number === 1){
+    return "Yesterday"
+  } else if(number <= 7){
+    return "Last " +brewDate.subDates(props);
+  } else {
+    return brewDate.subDates(props);
+  }
+}
+
+// Subtract dates by number and return a day!
+const subDay = (date, number) => {
+  const props = {
+    date : date,
+    number : number
+  }
+  if(number === 1){
+    return "Yesterday";
+  }
+  else if(number <= 7){
+    return "Last " +brewDate.subDay(props);
+  } else {
+    return brewDate.subDay(props);
+  }
 }
 
 // Add dates by number 
@@ -148,9 +170,22 @@ const diffMonths = (date1, date2) => {
     }
 }
 
+// Get the dates inbetween of two dates!
+const getBetween = (start, end) => {
+  const props = {
+    start : start,
+    end : end 
+  }
+  if(end == undefined){
+    return "getBetween function needs start date and end date";
+  } else {
+    return brewDate.getBetween(props);
+  }
+}
+
 // Exporting the functions
 module.exports = {
   getDate, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
-  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths
+  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay
 }

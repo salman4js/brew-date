@@ -73,6 +73,11 @@ const subDates = (props) => {
   return date.toDateString();
 }
 
+// Subtract dates by number and return a day!
+const subDay = (props) => {
+  return getDay(subDates(props));
+}
+
 // Add dates by numbers 
 const addDates = (props) => {
   const date = new Date(props.date);
@@ -190,9 +195,26 @@ const diffMonths = (props) => {
   }
 }
 
+// Get dates inbetween of two dates!
+const getBetween = (props) => {
+      var arr = new Array();
+      var dt = new Date(props.start);
+      while (dt <= new Date(props.end)) {
+          arr.push(format(new Date(dt)));
+          dt.setDate(dt.getDate() + 1);
+      }
+      return arr;
+      // var result = new Array();
+      // // Converting the date object array values into an formatable array value!
+      // for(i = 0; i <= arr.length - 1; i++){
+      //   result.push(format(arr[i]));
+      // }
+      // return result;
+}
+
 
 module.exports = {
   getDate, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay
 }
