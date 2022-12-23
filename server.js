@@ -8,8 +8,13 @@ const getDate = () => brewDate.getDate();
 const getFullDate = (props) => brewDate.getFullDate(props);
 
 // Format Date from getDate to getFullDate;
-const format = (props) => brewDate.format(props);
-
+const format = (date, format) => {
+  const props = {
+    date : date, 
+    format : format
+  }
+  return brewDate.format(props);
+}
 // Format date from passing year, month, day into {getDate};
 const formatDate = (year, month, date) => {
   const props = {

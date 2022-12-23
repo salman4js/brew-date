@@ -38,7 +38,7 @@ const getFullDate = (props) => {
 
 // convert from {getDate} into {getFullDate};
 const format = (props) => {
-  var d = new Date(props),
+  var d = new Date(props.date),
         month = '' + (d.getMonth() + 1),
         day = '' + (d.getDate()),
         year = d.getFullYear();
@@ -47,8 +47,14 @@ const format = (props) => {
         month = '0' + month;
     if (day.length < 2) 
         day = '0' + day;
-
-    return [year, month, day].join('/');
+        
+    if(props.format === "yyyy/mm/dd"){
+      return [year, month, day].join('/');
+    } else if(props.format === "dd/mm/yyyy"){
+      return [day, month, year].join('/');
+    } else {
+      return "Please provide valid format as the second parameter"
+    }
 }
 
 // Date object into {getDate} format;
@@ -200,7 +206,11 @@ const getBetween = (props) => {
       var arr = new Array();
       var dt = new Date(props.start);
       while (dt <= new Date(props.end)) {
-          arr.push(format(new Date(dt)));
+          const props = {
+            date  : new Date(dt),
+            format : "yyyy/mm/dd"
+          }
+          arr.push(format(props));
           dt.setDate(dt.getDate() + 1);
       }
       return arr;
