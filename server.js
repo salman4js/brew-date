@@ -4,6 +4,11 @@ const brewDate = require("./brewDate/Date.js");
 // Get Date in string in the format of {Day Mon Date Year Time};
 const getDate = () => brewDate.getDate();
 
+const getDayTime = (props1, props2, props3, props4) =>  {
+  const array = [props1, props2, props3, props4];
+  return brewDate.getDayTime(array);
+};
+
 // Get Date in string in the specified format of dd/mm/yyyy || yyyy/mm/dd;
 const getFullDate = (props) => brewDate.getFullDate(props);
 
@@ -184,7 +189,7 @@ const getBetween = (start, end) => {
 
 // Exporting the functions
 module.exports = {
-  getDate, getFullDate, format, formatDate, diffBetween, 
+  getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
   diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay
 }

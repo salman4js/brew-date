@@ -12,6 +12,34 @@ const getDate = () => {
   }
 }
 
+// Get day, date, time!
+const getDayTime = (props) => {
+  var currentDate = new Date();
+
+  // Split the date into its various components
+  var day = getDay(currentDate, "ddd");
+  var date = currentDate.getDate().toString();
+  var month = currentDate.getMonth().toString();
+  var year = currentDate.getFullYear().toString();
+  var time = currentDate.getHours().toString() + ":" + currentDate.getMinutes().toString() + ":" + currentDate.getSeconds().toString();
+
+  // Create an object to store the date components
+  var dateComponents = {
+    day: day,
+    date: date,
+    month: month,
+    year: year,
+    time: time
+  };
+  
+  var values = props.map(function(prop) {
+    return dateComponents[prop];
+  });
+
+  return values.join(' ');
+}
+
+
 const getFullDate = (props) => {
   const current = new Date();
   var currentDate = current.getDate.toString().length > 1;
@@ -224,7 +252,7 @@ const getBetween = (props) => {
 
 
 module.exports = {
-  getDate, getFullDate, format, formatDate, diffBetween, 
+  getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
   diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay
 }
