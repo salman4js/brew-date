@@ -4,8 +4,8 @@ const brewDate = require("./brewDate/Date.js");
 // Get Date in string in the format of {Day Mon Date Year Time};
 const getDate = () => brewDate.getDate();
 
-const getDayTime = (props1, props2, props3, props4) =>  {
-  const array = [props1, props2, props3, props4];
+const getDayTime = (props1, props2, props3, props4, props5) =>  {
+  const array = [props1, props2, props3, props4, props5];
   return brewDate.getDayTime(array);
 };
 

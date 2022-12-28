@@ -35,7 +35,7 @@ const getDayTime = (props) => {
   var values = props.map(function(prop) {
     return dateComponents[prop];
   });
-
+  
   return values.join(' ');
 }
 
