@@ -42,23 +42,18 @@ const getDayTime = (props) => {
 
 const getFullDate = (props) => {
   const current = new Date();
-  var currentDate = current.getDate.toString().length > 1;
+  var currentDate = current.getDate().toString().length > 1;
+  var currentMonth = current.getMonth().toString().length > 1;
   if(props == "yyyy/mm/dd"){
-    if(currentDate){
-      const date = `${current.getFullYear()}/${current.getMonth() + 1}/${current.getDate()}`;
-      return date;
-    } else {
-      const date = `${current.getFullYear()}/${current.getMonth()+1}/${"0"+current.getDate()}`;
-      return date;
-    }
+    const month = currentMonth ? (current.getMonth() + 1) : "0"+ (current.getMonth()+1);
+    const date = currentDate ? current.getDate() : "0"+current.getDate();
+    const result = `${current.getFullYear()}/${month}/${date}`;
+    return result;
   } else if(props == "dd/mm/yyyy"){
-    if(currentDate){
-      const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-      return date;
-    } else {
-      const date = `${current.getDate()}/${current.getMonth()+1}/${"0"+current.getFullYear()}`;
-      return date;
-    }
+    const month = currentMonth ? (current.getMonth() + 1) : "0"+ (current.getMonth()+1);
+    const date = currentDate ? current.getDate() : "0"+current.getDate();
+    const result = `${date}/${month}/${current.getFullYear()}`;
+    return result;
   } else {
     return "Please check your format or brew-date doesn't support this format yet."
   }
