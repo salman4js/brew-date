@@ -245,9 +245,21 @@ const getBetween = (props) => {
       // return result;
 }
 
+function getAllDatesOfMonth(year, month) {
+  const dates = [];
+  const lastDate = new Date(year, month + 1, 0).getDate();
+  for (let i = 1; i <= lastDate; i++) {
+    const props = {
+      date: new Date(year, month, i),
+      format: "yyyy/mm/dd"
+    }
+    dates.push(format(props));
+  }
+  return dates;
+}
 
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth
 }

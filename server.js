@@ -187,9 +187,18 @@ const getBetween = (start, end) => {
   }
 }
 
+// Get all the dates from the month mentioned!
+const getAllDatesOfMonth = (year, month) => {
+  if(year && month !== undefined){
+    return brewDate.getAllDatesOfMonth(year, month);
+  } else {
+    return "Please provide valid input!"
+  }
+}
+
 // Exporting the functions
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
-  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay
+  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth
 }
