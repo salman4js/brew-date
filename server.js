@@ -196,9 +196,16 @@ const getAllDatesOfMonth = (year, month) => {
   }
 }
 
+// Get current time in AM and PM format!
+const getTime = () => {
+  const date = new Date();
+  const time  = new Date().toLocaleTimeString();
+  return time;
+}
+
 // Exporting the functions
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
-  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth
+  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, getTime
 }
