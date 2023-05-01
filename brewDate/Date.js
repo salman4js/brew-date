@@ -317,7 +317,6 @@ function getTimeBetween(start, end){
     result.push(timeFormat(currentTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit' })));
   }
 
-  result.push(timeFormat(endTime.toLocaleTimeString('en-US',[], { hour: '2-digit', minute: '2-digit' })));
 
   return result;
 }
