@@ -300,12 +300,10 @@ function convert24to12(timestart){
 // Convert time inbetween based on two times provided!
 function getTimeBetween(start, end){
   
-  var currentDate = getFullDate("yyyy/mm/dd")
-
   var result = [];
   
-  const startTime = new Date(currentDate + " " + start);
-  const endTime = new Date(currentDate + " " + end);
+  const startTime = new Date(start);
+  const endTime = new Date(end);
   
 
   result.push(timeFormat(startTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})))
