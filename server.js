@@ -212,9 +212,18 @@ function convert12to24(timestart){
     }
 }
 
+// Convert 12 hours time format into 24 hour time format and vice versa!
+function convert24to12(timestart){
+    if(timestart !== undefined){
+       return brewDate.convert24to12(timestart);
+    } else {
+      return "Please provide a time!"
+    }
+}
+
 // Exporting the functions
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
-  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, getTime, convert12to24
+  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, getTime, convert12to24, convert24to12
 }

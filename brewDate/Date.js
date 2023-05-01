@@ -276,9 +276,29 @@ function convert12to24(timestart){
   return timeend;
 }
 
+// Convert 24 hour format into 12 hour format!
+function convert24to12(timestart){
+  var format;
+  var hrs = Number(timestart.match(/^(\d+)/)[1]);
+  var mnts = Number(timestart.match(/:(\d+)/)[1]);
+  if (hrs < 12) {
+    format = "AM";
+  } else if (hrs >= 12) {
+    hrs = hrs - 12;
+    format = "PM"
+  }
+  
+  var hours = hrs.toString();
+  var minutes = mnts.toString();
+  if (hrs < 10) hours = "0" + hours;
+  if (mnts < 10) minutes = "0" + minutes;
+  var timeend = hours + ":" + minutes + " " +format;
+  return timeend;
+}
+
 
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24, convert24to12
 }
