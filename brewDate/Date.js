@@ -306,7 +306,7 @@ function getTimeBetween(start, end){
   const endTime = new Date(end);
   
 
-  result.push(timeFormat(startTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})))
+  result.push(removeSeconds(startTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})))
 
   // Loop through the times every half-hour and output them
   let currentTime = new Date(startTime);
@@ -314,14 +314,25 @@ function getTimeBetween(start, end){
     // Add 30 minutes to the current time
     currentTime.setTime(currentTime.getTime() + (30 * 60 * 1000));
 
-    result.push(timeFormat(currentTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit' })));
+    result.push(removeSeconds(currentTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})));
   }
 
 
   return result;
 }
 
-// Handle Time format -- Helper Function!
+// Handle time format -- Helper function for getTimeBetween
+function removeSeconds(time){
+  var [hour, minutes, format] = time.split(":");
+  // Determine AM or PM!
+  format  = format.split(" "); // this format has the value AM or PM!
+  const result = hour + ":" + minutes + " " +format[1];
+  return result;
+}
+
+
+
+// Handle time format --> Convert 12 to 24 and vice versa!
 function timeFormat(time){
   try{
     const [hour, minutes] = time.split(":");
