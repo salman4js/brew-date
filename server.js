@@ -221,9 +221,18 @@ function convert24to12(timestart){
     }
 }
 
+// Get inbetween time based on the time provide!
+function getTimeBetween(start, end){
+  if(start === undefined || end === undefined){
+    return "Please provide a valid start and end time"
+  } else {
+    return brewDate.getTimeBetween(start, end);
+  }
+}
+
 // Exporting the functions
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
-  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, getTime, convert12to24, convert24to12
+  diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, getTime, convert12to24, convert24to12, getTimeBetween
 }

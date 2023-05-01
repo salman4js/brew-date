@@ -266,8 +266,8 @@ function convert12to24(timestart){
   var hrs = Number(timestart.match(/^(\d+)/)[1]);
   var mnts = Number(timestart.match(/:(\d+)/)[1]);
   var format = timestart.match(/\s(.*)$/)[1];
-  if (format == "PM" || format == "pm" && hrs < 12) hrs = hrs + 12;
-  if (format == "AM" || format == "am" && hrs == 12) hrs = hrs - 12;
+  if ((format == "PM" || format == "pm") && hrs < 12) hrs = hrs + 12;
+  if ((format == "AM" || format == "am") && hrs == 12) hrs = hrs - 12;
   var hours = hrs.toString();
   var minutes = mnts.toString();
   if (hrs < 10) hours = "0" + hours;
@@ -297,8 +297,36 @@ function convert24to12(timestart){
 }
 
 
+// Convert time inbetween based on two times provided!
+function getTimeBetween(start, end){
+  
+  var currentDate = getFullDate("yyyy/mm/dd")
+
+  var result = [];
+  
+  const startTime = new Date(currentDate + " " + start);
+  const endTime = new Date(currentDate + " " + end);
+  
+
+  result.push(startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+
+  // Loop through the times every half-hour and output them
+  let currentTime = new Date(startTime);
+  while (currentTime < endTime) {
+    // Add 30 minutes to the current time
+    currentTime.setTime(currentTime.getTime() + (30 * 60 * 1000));
+
+    result.push(currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  }
+
+  result.push(endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+
+  return result;
+}
+
+
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24, convert24to12
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween
 }
