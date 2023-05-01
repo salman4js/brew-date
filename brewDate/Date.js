@@ -306,7 +306,7 @@ function getTimeBetween(start, end){
   const endTime = new Date(end);
   
 
-  result.push(timeFormat(startTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})))
+  result.push((startTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})))
 
   // Loop through the times every half-hour and output them
   let currentTime = new Date(startTime);
@@ -314,7 +314,7 @@ function getTimeBetween(start, end){
     // Add 30 minutes to the current time
     currentTime.setTime(currentTime.getTime() + (30 * 60 * 1000));
 
-    result.push(timeFormat(currentTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit' })));
+    result.push((currentTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit' })));
   }
 
 
