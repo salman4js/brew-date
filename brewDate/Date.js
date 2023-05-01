@@ -325,6 +325,7 @@ function getTimeBetween(start, end){
 // Handle Time format -- Helper Function!
 function timeFormat(time){
   const [hour, minutes] = time.split(":");
+  console.log(hour, minutes);
   var min = minutes.length > 1 ? minutes : "0" + minutes;
   if (hour > 12) {
     const time = hour - 12 + ":" + min + " PM";
