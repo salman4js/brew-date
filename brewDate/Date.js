@@ -245,6 +245,8 @@ const getBetween = (props) => {
       // return result;
 }
 
+
+// Get all dates of month!
 function getAllDatesOfMonth(year, month) {
   const dates = [];
   const lastDate = new Date(year, month + 1, 0).getDate();
@@ -258,8 +260,25 @@ function getAllDatesOfMonth(year, month) {
   return dates;
 }
 
+
+// Convert 12 hour format into 24 hour format!
+function convert12to24(timestart){
+  var hrs = Number(timestart.match(/^(\d+)/)[1]);
+  var mnts = Number(timestart.match(/:(\d+)/)[1]);
+  var format = timestart.match(/\s(.*)$/)[1];
+  if (format == "PM" || format == "pm" && hrs < 12) hrs = hrs + 12;
+  if (format == "AM" || format == "am" && hrs == 12) hrs = hrs - 12;
+  var hours = hrs.toString();
+  var minutes = mnts.toString();
+  if (hrs < 10) hours = "0" + hours;
+  if (mnts < 10) minutes = "0" + minutes;
+  var timeend = hours + ":" + minutes
+  return timeend;
+}
+
+
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24
 }
