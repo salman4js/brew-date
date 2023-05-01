@@ -308,7 +308,7 @@ function getTimeBetween(start, end){
   const endTime = new Date(currentDate + " " + end);
   
 
-  result.push(startTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }))
+  result.push(timeFormat(startTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit'})))
 
   // Loop through the times every half-hour and output them
   let currentTime = new Date(startTime);
@@ -316,17 +316,33 @@ function getTimeBetween(start, end){
     // Add 30 minutes to the current time
     currentTime.setTime(currentTime.getTime() + (30 * 60 * 1000));
 
-    result.push(currentTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+    result.push(timeFormat(currentTime.toLocaleTimeString('en-US', [], { hour: '2-digit', minute: '2-digit' })));
   }
 
-  result.push(endTime.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }));
+  result.push(timeFormat(endTime.toLocaleTimeString('en-US',[], { hour: '2-digit', minute: '2-digit' })));
 
   return result;
+}
+
+// Handle Time format -- Helper Function!
+function timeFormat(time){
+  const [hour, minutes] = time.split(":");
+  var min = minutes.length > 1 ? minutes : "0" + minutes;
+  if (hour > 12) {
+    const time = hour - 12 + ":" + min + " PM";
+    return time;
+  } else if (hour == 0) {
+    const time = 12 + ":" + min + " AM";
+    return time
+  } else {
+    const time = hour + ":" + min + " AM";
+    return time;
+  }  
 }
 
 
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat
 }
