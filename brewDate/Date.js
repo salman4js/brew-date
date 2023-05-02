@@ -335,7 +335,7 @@ function removeSeconds(time){
 // Handle time format --> Convert 12 to 24 and vice versa!
 function timeFormat(time){
   try{
-    const [hour, minutes] = time.split(":");
+    var [hour, minutes] = time.split(":");
     var min = minutes.length > 1 ? minutes : "0" + minutes;
     if (hour > 12) {
       const time = "0" + (hour - 12) + ":" + min + " PM";
@@ -344,7 +344,8 @@ function timeFormat(time){
       const time = 12 + ":" + min + " AM";
       return time
     } else {
-      const time = "0" + hour + ":" + min + " AM";
+      hour = hour.charAt(0) === "0" ? hour : "0" + hour; 
+      const time = hour + ":" + min + " AM";
       return time;
     }  
   } catch(err){
