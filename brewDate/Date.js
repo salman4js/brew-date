@@ -338,13 +338,14 @@ function timeFormat(time){
     var [hour, minutes] = time.split(":");
     var min = minutes.length > 1 ? minutes : "0" + minutes;
     if (hour > 12) {
-      const time = "0" + (hour - 12) + ":" + min + " PM";
+      const temp = hour - 12;    
+      const time = (temp.toString().length > 1 ? temp : "0" + temp) + ":" + min + " PM";
       return time;
     } else if (hour == 0) {
       const time = 12 + ":" + min + " AM";
       return time
     } else {
-      hour = hour.charAt(0) === "0" ? hour : "0" + hour; 
+      hour = (hour.length > 1 || hour.charAt(0) == "0") ? hour : "0" + hour; 
       const time = hour + ":" + min + " AM";
       return time;
     }  
