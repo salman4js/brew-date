@@ -239,10 +239,19 @@ function timeFormat(time){
   }
 }
 
+// Round the time up!
+function roundTime(time){
+  if(time !== undefined){
+    return brewDate.roundTime(time);
+  } else {
+    return "Please provide a valid time";
+  }
+}
+
 // Exporting the functions
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
   diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, 
-  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat
+  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime
 }

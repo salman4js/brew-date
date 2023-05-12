@@ -355,9 +355,23 @@ function timeFormat(time){
   }
 }
 
+// Round the time up!
+function roundTime(time){
+  const splitedTime = time.split(":");
+  const minuteWithFormat = splitedTime[1];
+  const minute = minuteWithFormat.split(" ");
+  if(minute[0] > 30){
+    return (Number(splitedTime[0]) + 1) + ":00" + " " + minute[1];
+  } else {
+    return splitedTime[0] + ":30" + " " +minute[1]; 
+  }
+}
+
 
 module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
-  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat
+  diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, 
+  getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat,
+  roundTime
 }
