@@ -361,9 +361,13 @@ function roundTime(time){
   const minuteWithFormat = splitedTime[1];
   const minute = minuteWithFormat.split(" ");
   if(minute[0] > 30){
-    return (Number(splitedTime[0]) + 1) + ":00" + " " + minute[1];
+    const hour = (Number(splitedTime[0]) + 1).toString();
+    const determineHour = hour.length === 1 ? "0" + (Number(splitedTime[0]) + 1) : (Number(splitedTime[0]) + 1)
+    return determineHour + ":00" + " " + minute[1];
   } else {
-    return splitedTime[0] + ":30" + " " +minute[1]; 
+    const hour = (splitedTime[0].length).toString();
+    const determineHour = hour.length === 1 ? "0" + splitedTime[0] : splitedTime[0]
+    return determineHour + ":30" + " " +minute[1]; 
   }
 }
 
