@@ -365,7 +365,7 @@ function roundTime(time){
     const determineHour = hour.length === 1 ? "0" + (Number(splitedTime[0]) + 1) : (Number(splitedTime[0]) + 1)
     return determineHour + ":00" + " " + minute[1];
   } else {
-    const hour = (splitedTime[0].length).toString();
+    const hour = (splitedTime[0]).toString();
     const determineHour = hour.length === 1 ? "0" + splitedTime[0] : splitedTime[0]
     return determineHour + ":30" + " " +minute[1]; 
   }
