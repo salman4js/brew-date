@@ -227,22 +227,37 @@ const diffMonths = (props) => {
 // Get dates inbetween of two dates!
 const getBetween = (props) => {
       var arr = new Array();
-      var dt = new Date(props.start);
-      while (dt <= new Date(props.end)) {
+      var startDate = new Date(props.start);
+      while (startDate <= new Date(props.end)) {
           const props = {
-            date  : new Date(dt),
+            date  : new Date(startDate),
             format : "yyyy/mm/dd"
           }
           arr.push(format(props));
-          dt.setDate(dt.getDate() + 1);
+          startDate.setDate(startDate.getDate() + 1);
       }
       return arr;
+      
       // var result = new Array();
       // // Converting the date object array values into an formatable array value!
       // for(i = 0; i <= arr.length - 1; i++){
       //   result.push(format(arr[i]));
       // }
       // return result;
+}
+
+// Reverse the DD/MM/YYYY into YYYY/MM/DD
+function reverseDate(date){
+
+  const dateString = date;
+
+  // Split the date string into day, month, and year components
+  const [day, month, year] = dateString.split('/');
+
+  // Create a new date string in the format 'YYYY-MM-DD'
+  const reversedDate = `${year}/${month}/${day}`;
+
+  return reversedDate;
 }
 
 
@@ -377,5 +392,5 @@ module.exports = {
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
   diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, 
   getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat,
-  roundTime
+  roundTime, reverseDate
 }
