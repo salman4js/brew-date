@@ -1,4 +1,5 @@
 // brew - date
+const root = require('../impl/root');
 
 // Get date
 const getDate = () => {
@@ -54,6 +55,16 @@ const getFullDate = (props) => {
     const date = currentDate ? current.getDate() : "0"+current.getDate();
     const result = `${date}/${month}/${current.getFullYear()}`;
     return result;
+  } else if(props == "dd/mmm"){
+    const date = current.getDate();
+    const monthIndex = current.getMonth();
+    const monthAbbreviations = root.monthAbb();
+    
+    // Format date!
+    const month = monthAbbreviations[monthIndex];
+    const result = `${date} ${month}`;
+    return result;
+    
   } else {
     return "Please check your format or brew-date doesn't support this format yet."
   }
