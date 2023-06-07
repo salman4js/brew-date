@@ -100,7 +100,7 @@ const formatDate = (props) => {
 // Convert date into custom format -- // Output: Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time
 function formatDateToCustomFormat(date){
   const parts = date.split("/");
-  const formattedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+  const formattedDate = new Date(parts[0], parts[1] - 1, parts[2]);
   return formattedDate.toString();
 }
 
