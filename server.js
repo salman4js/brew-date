@@ -30,6 +30,15 @@ const formatDate = (year, month, date) => {
   return brewDate.formatDate(props);
 };
 
+// Format date into custom format!
+function formatDateToCustomFormat(date){
+  if(date !== undefined){
+    return brewDate.formatDateToCustomFormat(date);
+  } else {
+    return "Please provide a valid date!"
+  }
+}
+
 // Difference between two dates 
 const diffBetween = (date1, date2) => {
   const props = {
@@ -262,5 +271,5 @@ module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
   diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, 
-  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime, reverseDate
+  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime, reverseDate, formatDateToCustomFormat
 }

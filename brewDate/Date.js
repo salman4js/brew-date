@@ -97,6 +97,13 @@ const formatDate = (props) => {
   return event.toDateString();
 }
 
+// Convert date into custom format -- // Output: Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time
+function formatDateToCustomFormat(date){
+  const parts = date.split("/");
+  const formattedDate = new Date(parts[2], parts[1] - 1, parts[0]);
+  return formattedDate.toString();
+}
+
 // Number of days between two dates!
 const diffBetween = (props) => {
   const date1 = new Date(props.props1);
@@ -403,5 +410,5 @@ module.exports = {
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
   diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, 
   getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat,
-  roundTime, reverseDate
+  roundTime, reverseDate, formatDateToCustomFormat
 }
