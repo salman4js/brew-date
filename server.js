@@ -39,6 +39,15 @@ function formatDateToCustomFormat(date){
   }
 }
 
+// Convert custom date into date format!
+function formatCustomDateToDateFormat(date, time){
+  if(date !== undefined){
+    return brewDate.formatCustomDateToDateFormat(date, time);
+  } else {
+    return "Please provide a valid date."
+  }
+}
+
 // Difference between two dates 
 const diffBetween = (date1, date2) => {
   const props = {
@@ -271,5 +280,5 @@ module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
   diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, 
-  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime, reverseDate, formatDateToCustomFormat
+  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime, reverseDate, formatDateToCustomFormat, formatCustomDateToDateFormat
 }

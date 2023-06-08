@@ -98,10 +98,26 @@ const formatDate = (props) => {
 }
 
 // Convert date into custom format -- // Output: Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time
-function formatDateToCustomFormat(date){
+function formatDateToCustomFormat(date) {
   const parts = date.split("/");
-  const formattedDate = new Date(parts[0], parts[1] - 1, parts[2]);
+  const day = parseInt(parts[0], 10);
+  const month = parseInt(parts[1], 10) - 1;
+  const year = parseInt(parts[2], 10);
+  const formattedDate = new Date(year, month, day);
   return formattedDate.toString();
+}
+
+// Convert custom format into date format -- Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time to 17/06/2023
+function formatCustomDateToDateFormat(date, time){
+  var dateTime;
+  const options = { locale: 'en-GB' };
+  const value = new Date(date).toLocaleDateString('en-US', options);
+  if(time !== undefined){
+    dateTime = value + ' ' + time;
+  } else {
+    dateTime = value;
+  }
+  return dateTime;
 }
 
 // Number of days between two dates!
@@ -410,5 +426,5 @@ module.exports = {
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
   diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, 
   getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat,
-  roundTime, reverseDate, formatDateToCustomFormat
+  roundTime, reverseDate, formatDateToCustomFormat, formatCustomDateToDateFormat
 }
