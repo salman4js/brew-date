@@ -109,14 +109,15 @@ function formatDateToCustomFormat(date) {
 
 // Convert custom format into date format -- Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time to 17/06/2023
 function formatCustomDateToDateFormat(date, time){
-  const options = { day: '2-digit', month: '2-digit', year: 'numeric' };
-  const value = new Date(date).toLocaleDateString('en-GB', options);
-  if (time !== undefined) {
-    const formattedTime = new Date(time).toLocaleTimeString('en-US');
-    return `${value} ${formattedTime}`;
+  var dateTime;
+  const options = { locale: 'en-GB' };
+  const value = new Date(date).toLocaleDateString('en-US', options);
+  if(time !== undefined){
+    dateTime = value + ' ' + time;
   } else {
-    return value;
+    dateTime = value;
   }
+  return dateTime;
 }
 
 // Number of days between two dates!
