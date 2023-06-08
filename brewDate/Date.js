@@ -108,11 +108,14 @@ function formatDateToCustomFormat(date) {
 }
 
 // Convert custom format into date format -- Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time to 17/06/2023
-function formatCustomDateToDateFormat(date, time){
+function formatCustomDateToDateFormat(date, time) {
+  const [day, month, year] = date.split('/'); // Split the date string into day, month, and year
+  const formattedDate = `${month}/${day}/${year}`; // Reformat the date as 'mm/dd/yyyy'
+  
   var dateTime;
   const options = { locale: 'en-GB' };
-  const value = new Date(date).toLocaleDateString('en-US', options);
-  if(time !== undefined){
+  const value = new Date(formattedDate).toLocaleDateString('en-US', options);
+  if (time !== undefined) {
     dateTime = value + ' ' + time;
   } else {
     dateTime = value;
