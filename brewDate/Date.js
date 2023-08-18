@@ -127,9 +127,9 @@ function convertDateInto(dateString, format) {
 
   const formatted = format
     .replace('dd', date.toLocaleDateString('en-US', { day: '2-digit' }))
-    .replace('mm', date.toLocaleDateString('en-US', {month: 'numeric' }))
     .replace('mmmm', date.toLocaleDateString('en-US', { month: 'long' }))
     .replace('mmm', date.toLocaleDateString('en-US', { month: 'short' }))
+    .replace('mm', date.toLocaleDateString('en-US', {month: 'numeric' }))
     .replace('yyyy', date.toLocaleDateString('en-US', { year: 'numeric' }))
     .replace('year', date.getFullYear())
     .replace('time', date.toLocaleTimeString('en-US', timeOptions));
