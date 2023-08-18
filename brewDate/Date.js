@@ -105,6 +105,35 @@ function formatDateToCustomFormat(date) {
   const year = parseInt(parts[2], 10);
   const formattedDate = new Date(year, month, day);
   return formattedDate.toString();
+};
+
+// Convert date into provided format!
+function convertDateInto(dateString, format) {
+  const date = new Date(dateString);
+
+  const options = {
+    day: '2-digit',
+    month: 'short',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  };
+  
+   const timeOptions = {
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+
+  const formatted = format
+    .replace('dd', date.toLocaleDateString('en-US', { day: '2-digit' }))
+    .replace('mmmm', date.toLocaleDateString('en-US', { month: 'long' }))
+    .replace('mmm', date.toLocaleDateString('en-US', { month: 'short' }))
+    .replace('yyyy', date.toLocaleDateString('en-US', { year: 'numeric' }))
+    .replace('year', date.getFullYear())
+    .replace('time', date.toLocaleTimeString('en-US', timeOptions));
+
+  return formatted;
 }
 
 // Convert custom format into date format -- Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time to 17/06/2023
@@ -426,5 +455,6 @@ module.exports = {
   subDates, addDates, ago, getDay, diffSeconds, diffMinutes, 
   diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, 
   getAllDatesOfMonth, convert12to24, convert24to12, getTimeBetween, timeFormat,
-  roundTime, reverseDate, formatDateToCustomFormat, formatCustomDateToDateFormat
+  roundTime, reverseDate, formatDateToCustomFormat, formatCustomDateToDateFormat,
+  convertDateInto
 }

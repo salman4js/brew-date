@@ -273,6 +273,15 @@ function reverseDate(date){
   } else {
     return "Please provide a valid date"
   }
+};
+
+// Convert date into formats!
+function convertDateInto(dateString, format){
+  if(dateString !== undefined){
+    return brewDate.convertDateInto(dateString, format);
+  } else {
+    return "Please provide a valid date and format"
+  }
 }
 
 // Exporting the functions
@@ -280,5 +289,6 @@ module.exports = {
   getDate, getDayTime, getFullDate, format, formatDate, diffBetween, 
   subDates, addDates, ago, getDay, diffSeconds, 
   diffMinutes, diffHours, diffDays, diffWeeks, diffYears, diffMonths, getBetween, subDay, getAllDatesOfMonth, 
-  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime, reverseDate, formatDateToCustomFormat, formatCustomDateToDateFormat
+  getTime, convert12to24, convert24to12, getTimeBetween, timeFormat, roundTime, reverseDate, formatDateToCustomFormat, formatCustomDateToDateFormat,
+  convertDateInto
 }
