@@ -44,7 +44,7 @@ const getDayTime = (props) => {
 const getFullDate = (props) => {
   const current = new Date();
   var currentDate = current.getDate().toString().length > 1;
-  var currentMonth = current.getMonth().toString().length > 1;
+  var currentMonth = (current.getMonth() + 1).toString().length > 1;
   if(props == "yyyy/mm/dd"){
     const month = currentMonth ? (current.getMonth() + 1) : "0"+ (current.getMonth()+1);
     const date = currentDate ? current.getDate() : "0"+current.getDate();
