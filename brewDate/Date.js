@@ -140,8 +140,8 @@ function convertDateInto(dateString, format) {
 // Convert custom format into date format -- Sat Jun 17 2023 00:00:00 GMT+0530 (India Standard Time to 17/06/2023
 function formatCustomDateToDateFormat(date, time){
   var dateTime;
-  const options = { locale: 'en-GB' };
-  const value = new Date(date).toLocaleDateString('en-US', options);
+  const options = { day: 'numeric', month: 'numeric', year: 'numeric' };
+  const value = new Date(date).toLocaleDateString('en-GB', options);
   if(time !== undefined){
     dateTime = value + ' ' + time;
   } else {
