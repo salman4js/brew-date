@@ -108,17 +108,17 @@ function formatDateToCustomFormat(date) {
 };
 
 // Convert date into provided format!
-function convertDateInto(dateString, format) {
+function convertDateInto(dateString, format, options) {
   const date = new Date(dateString);
 
-  const options = {
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric',
-    hour: '2-digit',
-    minute: '2-digit',
-    second: '2-digit',
-  };
+  // const options = {
+  //   day: '2-digit',
+  //   month: 'short',
+  //   year: 'numeric',
+  //   hour: '2-digit',
+  //   minute: '2-digit',
+  //   second: '2-digit',
+  // };
   
    const timeOptions = {
     hour: '2-digit',
@@ -126,13 +126,13 @@ function convertDateInto(dateString, format) {
   };
 
   const formatted = format
-    .replace('dd', date.toLocaleDateString('en-US', { day: '2-digit' }))
-    .replace('mmmm', date.toLocaleDateString('en-US', { month: 'long' }))
-    .replace('mmm', date.toLocaleDateString('en-US', { month: 'short' }))
-    .replace('mm', date.toLocaleDateString('en-US', {month: 'numeric' }))
-    .replace('yyyy', date.toLocaleDateString('en-US', { year: 'numeric' }))
+    .replace('dd', date.toLocaleDateString(options?.dd?.toLocaleDateString || 'en-US', { day: options?.dd?.dateTimeFormatOptions || '2-digit'}))
+    .replace('mmmm', date.toLocaleDateString(options?.mmmm?.toLocaleDateString || 'en-US', { month: options?.mmmm?.dateTimeFormatOptions || 'long' }))
+    .replace('mmm', date.toLocaleDateString(options?.mmm?.toLocaleDateString || 'en-US', { month: options?.mmm?.dateTimeFormatOptions || 'short' }))
+    .replace('mm', date.toLocaleDateString(options?.mm?.toLocaleDateString || 'en-US', {month: options?.mm?.dateTimeFormatOptions || 'numeric' }))
+    .replace('yyyy', date.toLocaleDateString(options?.yyyy?.toLocaleDateString || 'en-US', { year: options?.yyyy?.dateTimeFormatOptions || 'numeric' }))
     .replace('year', date.getFullYear())
-    .replace('time', date.toLocaleTimeString('en-US', timeOptions));
+    .replace('time', date.toLocaleTimeString(options?.time?.toLocaleDateString || 'en-US', timeOptions));
 
   return formatted;
 }

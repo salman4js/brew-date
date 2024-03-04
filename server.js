@@ -276,9 +276,9 @@ function reverseDate(date){
 };
 
 // Convert date into formats!
-function convertDateInto(dateString, format){
+function convertDateInto(dateString, format, options){
   if(dateString !== undefined){
-    return brewDate.convertDateInto(dateString, format);
+    return brewDate.convertDateInto(dateString, format, options);
   } else {
     return "Please provide a valid date and format"
   }
